@@ -202,16 +202,17 @@
     /* ── Con Edison rotation badges ── */
     .badge-pill {
       display: inline-block;
-      border: 2px solid black;
-      padding: 0.25rem 0.75rem;
+      border: 1.5px solid black;
+      padding: 0px 6px;
       font-family: 'Bebas Neue', cursive;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: bold;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       vertical-align: middle;
-      margin-left: 10px;
+      margin-left: 8px;
       border-radius: 999px;
+      line-height: 1.6;
     }
 
     /* ── Company logo box ── */
@@ -433,6 +434,25 @@
         }
 
         // ═══════════════════════════════════════════════════════════════════
+        // TAG COLOR MAP — semantic, consistent across all sections
+        // Languages=mint, Frameworks=yellow, Infra/protocols=red, Domain/fellowship=purple
+        // ═══════════════════════════════════════════════════════════════════
+        var TAG_COLORS = {
+          // Languages
+          'C#': '#6DC8A0', 'JAVA': '#6DC8A0', 'RUST': '#6DC8A0', 'PYTHON': '#6DC8A0',
+          // Frameworks & runtimes
+          '.NET': '#F5E642', 'SPRING BOOT': '#F5E642', 'REACT NATIVE': '#F5E642',
+          'EXPO': '#F5E642', 'NODEJS': '#F5E642', 'NEXTJS': '#F5E642',
+          // Infrastructure, cloud, protocols
+          'REDIS': '#FF6B7A', 'AZURE': '#FF6B7A', 'GIS': '#FF6B7A', 'IT': '#FF6B7A',
+          'REST': '#FF6B7A', 'GRPC': '#FF6B7A',
+          // Domain, programs, fellowships
+          'FINTECH': '#C49FD8', 'BANKING': '#C49FD8', 'FRONTEND': '#C49FD8',
+          'FELLOWSHIP': '#C49FD8', 'CUNY FELLOWSHIP': '#C49FD8', 'PRE-COLLEGE': '#C49FD8'
+        };
+        function tagColor(tag) { return TAG_COLORS[tag] || '#FFFFFF'; }
+
+        // ═══════════════════════════════════════════════════════════════════
         // RENDER EXPERIENCE
         // ═══════════════════════════════════════════════════════════════════
         function renderExperience() {
@@ -440,9 +460,8 @@
           var html = '';
 
           PORTFOLIO_DATA.experience.forEach(function (entry) {
-            var tagsHtml = entry.tags.map(function (tag, i) {
-              var color = entry.tagColors[i] || '#FFFFFF';
-              return '<span class="border-2 border-black px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + color + '">' + tag + '</span>';
+            var tagsHtml = entry.tags.map(function (tag) {
+              return '<span class="border-2 border-black px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + tagColor(tag) + '">' + tag + '</span>';
             }).join('');
 
             var bulletsHtml = entry.bullets.map(function (b) {
@@ -492,13 +511,11 @@
         function renderProjects() {
           var container = document.getElementById('projects-grid');
           var catColors = { FULLSTACK: '#6DC8A0', SYSTEMS: '#FF6B7A', ML: '#C49FD8' };
-          var palette = ['#6DC8A0', '#F5E642', '#FF6B7A', '#C49FD8'];
           var html = '';
 
           PORTFOLIO_DATA.projects.forEach(function (project) {
-            var techHtml = project.techStack.map(function (t, i) {
-              var color = palette[i % palette.length];
-              return '<span class="border-2 border-black px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + color + '">' + t + '</span>';
+            var techHtml = project.techStack.map(function (t) {
+              return '<span class="border-2 border-black px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider" style="background-color:#1A1A1A;color:white">' + t + '</span>';
             }).join('');
 
             var linksHtml = project.links.map(function (link) {
