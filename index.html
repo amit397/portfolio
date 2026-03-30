@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>AMIT HOWLADER — SOFTWARE ENGINEER</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lilita+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-fixed": "#ffdada",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#40000c",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#002114",
+            "inverse-on-surface": "#f3f0f0",
+            "surface": "#fbf9f8",
+            "secondary": "#676000",
+            "secondary-fixed": "#f5e642",
+            "background": "#fbf9f8",
+            "surface-container-low": "#f6f3f2",
+            "on-surface": "#1b1c1c",
+            "outline": "#6e7a73",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#8e152c",
+            "primary": "#006c4c",
+            "surface-tint": "#006c4c",
+            "secondary-container": "#f5e642",
+            "surface-container-high": "#eae7e7",
+            "on-secondary-fixed-variant": "#4e4800",
+            "on-surface-variant": "#3e4943",
+            "surface-container-highest": "#e4e2e1",
+            "outline-variant": "#bec9c1",
+            "inverse-primary": "#7dd8af",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#1f1c00",
+            "on-tertiary-fixed-variant": "#8c132b",
+            "inverse-surface": "#303030",
+            "primary-fixed-dim": "#7dd8af",
+            "tertiary-container": "#ff9ba1",
+            "tertiary": "#ad2e41",
+            "primary-container": "#6dc8a0",
+            "error": "#ba1a1a",
+            "primary-fixed": "#99f5ca",
+            "on-background": "#1b1c1c",
+            "surface-variant": "#e4e2e1",
+            "surface-container": "#f0eded",
+            "on-primary-fixed-variant": "#005138",
+            "surface-dim": "#dcd9d9",
+            "surface-bright": "#fbf9f8",
+            "on-secondary-container": "#6e6600",
+            "tertiary-fixed-dim": "#ffb3b6",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#d8ca23",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#005339",
+            "on-error": "#ffffff"
+          },
+          fontFamily: {
+            "headline": ["Lilita One", "cursive"],
+            "mono": ["Space Mono", "monospace"],
+            "label": ["Bebas Neue", "cursive"],
+            "body": ["Space Mono", "monospace"]
+          },
+          borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .graph-paper {
+      background-color: #f5faf8;
+      background-image:
+        linear-gradient(#c8e6e0 1px, transparent 1px),
+        linear-gradient(90deg, #c8e6e0 1px, transparent 1px);
+      background-size: 30px 30px;
+      background-attachment: fixed;
+    }
+
+    .graph-paper::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(200, 230, 224, 0.2);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    /* Animation removed — JS rAF marquee handles movement */
+    .ticker-content {
+      display: inline-block;
+      white-space: nowrap;
+      will-change: transform;
+    }
+
+    .brutalist-card {
+      box-shadow: 5px 5px 0px 0px #000000;
+      transition: all 0.1s ease;
+    }
+
+    .brutalist-card:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0px 0px #000000;
+    }
+
+    .brutalist-button {
+      box-shadow: 4px 4px 0px 0px #000000;
+      transition: all 0.1s ease;
+    }
+
+    .brutalist-button:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0px 0px 0px 0px #000000;
+    }
+
+    .highlighter-yellow {
+      background: linear-gradient(to top, #f5e642 40%, transparent 40%);
+    }
+
+    .highlighter-mint {
+      background: linear-gradient(to top, #6dc8a0 40%, transparent 40%);
+    }
+
+    .all-caps-mono {
+      text-transform: uppercase;
+    }
+
+    /* ── Smooth scroll ── */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    /* ── Hero entrance ── */
+    .hero-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .hero-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Card scroll-in ── */
+    .card-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .card-fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Project filter ── */
+    .project-card-wrapper {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .project-card-wrapper.hidden-filter {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+
+    .project-card-wrapper.visible-filter {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── Nav scroll-spy ── */
+    .nav-pill-active {
+      background-color: #F5E642 !important;
+      transform: translate(3px, 3px) !important;
+      box-shadow: none !important;
+    }
+
+    /* ── Con Edison rotation badges ── */
+    .badge-pill {
+      display: inline-block;
+      border: 2px solid black;
+      padding: 0.25rem 0.75rem;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      margin-left: 10px;
+      border-radius: 999px;
+    }
+
+    /* ── Company logo box ── */
+    .logo-box {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border: 2px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      overflow: hidden;
+      margin-right: 14px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .logo-box.logo-fallback {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      color: #1A1A1A;
+    }
+
+    .logo-box.logo-fallback::after {
+      content: attr(data-initials);
+    }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+  </style>
+</head>
+
+<body class="graph-paper text-[#1A1A1A] font-body selection:bg-secondary-fixed selection:text-black">
+
+  <!-- Tailwind dynamic-class safelist -->
+  <div class="hidden" aria-hidden="true">
+    <span
+      class="bg-[#6DC8A0] bg-[#F5E642] bg-[#FF6B7A] bg-[#C49FD8] bg-[#FFFFFF] bg-[#003DA5] bg-[#00965E] bg-[#EB001B] bg-[#F79E1B] bg-[#C8102E] bg-[#1A1A2E] bg-[#00AEEF] bg-[#F25022] bg-[#7FBA00] bg-[#00A4EF] bg-[#FFB900] bg-[#1A1A1A]"></span>
+  </div>
+
+  <!-- ── HEADER ─────────────────────────────────────────────────────────── -->
+  <header
+    class="fixed top-0 w-full z-50 bg-white border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col"
+    id="site-header">
+    <div class="flex justify-between items-center px-6 py-4">
+      <div class="text-3xl font-black tracking-tighter text-black uppercase font-headline">AMIT · SWE</div>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex gap-4">
+        <a class="text-black border-2 border-black px-4 py-1 rounded-full hover:bg-[#6DC8A0] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none font-label text-base font-bold tracking-wider"
+          data-section="about" href="#about">ABOUT</a>
+        <a class="text-black border-2 border-black px-4 py-1 rounded-full hover:bg-[#6DC8A0] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none font-label text-base font-bold tracking-wider"
+          data-section="experience" href="#experience">EXPERIENCE</a>
+        <a class="text-black border-2 border-black px-4 py-1 rounded-full hover:bg-[#6DC8A0] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none font-label text-base font-bold tracking-wider"
+          data-section="projects" href="#projects">PROJECTS</a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center gap-1.5 p-2" aria-label="Open menu">
+        <span class="w-6 h-0.5 bg-black block transition-all"></span>
+        <span class="w-6 h-0.5 bg-black block transition-all"></span>
+        <span class="w-6 h-0.5 bg-black block transition-all"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="md:hidden">
+      <div class="flex flex-col gap-3 px-6 pb-4">
+        <a class="text-black border-2 border-black px-4 py-2 rounded-full hover:bg-[#6DC8A0] transition-all font-label text-base font-bold tracking-wider text-center"
+          data-section="about" href="#about">ABOUT</a>
+        <a class="text-black border-2 border-black px-4 py-2 rounded-full hover:bg-[#6DC8A0] transition-all font-label text-base font-bold tracking-wider text-center"
+          data-section="experience" href="#experience">EXPERIENCE</a>
+        <a class="text-black border-2 border-black px-4 py-2 rounded-full hover:bg-[#6DC8A0] transition-all font-label text-base font-bold tracking-wider text-center"
+          data-section="projects" href="#projects">PROJECTS</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-[72px] md:pt-[72px]">
+
+    <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+    <section class="min-h-screen md:min-h-[819px] flex items-center justify-between gap-12 px-6 md:px-20 pb-12"
+      id="about">
+      <div class="max-w-2xl z-10">
+        <h1 class="font-headline text-7xl md:text-[96px] leading-none mb-4 tracking-tighter uppercase hero-animate"
+          id="hero-title"></h1>
+        <p class="font-mono text-xl mb-8 uppercase tracking-widest font-bold hero-animate" id="hero-subtitle"></p>
+        <p class="font-mono text-lg mb-12 leading-relaxed uppercase hero-animate" id="hero-bio"></p>
+        <div class="flex flex-wrap gap-4" id="hero-links"></div>
+      </div>
+
+      <!-- Profile pic — flex sibling, stays vertically centered automatically -->
+      <div class="hidden lg:block w-64 h-64 flex-shrink-0 border-[3px] border-black rounded-full overflow-hidden">
+        <img src="pfp.png" alt="Profile Picture" class="w-full h-full object-cover" />
+      </div>
+    </section>
+
+    <!-- ── TICKER 1 (MINT) ────────────────────────────────────────────────── -->
+    <div class="ticker-wrap bg-[#6DC8A0] border-y-[3px] border-black py-4">
+      <div class="ticker-content font-label text-2xl font-bold uppercase tracking-widest" id="ticker-mint"></div>
+    </div>
+
+    <!-- ── WORK EXPERIENCE ───────────────────────────────────────────────── -->
+    <section class="py-32 px-6" id="experience">
+      <div class="max-w-screen-md mx-auto">
+        <h2 class="font-headline text-6xl mb-16 inline-block highlighter-yellow uppercase">WORK EXPERIENCE</h2>
+        <div class="space-y-12" id="experience-list"></div>
+      </div>
+    </section>
+
+    <!-- ── TICKER 2 (YELLOW) ─────────────────────────────────────────────── -->
+    <div class="ticker-wrap bg-[#F5E642] border-y-[3px] border-black py-4">
+      <div class="ticker-content font-label text-2xl font-bold uppercase tracking-widest" id="ticker-yellow"></div>
+    </div>
+
+    <!-- ── PROJECTS ──────────────────────────────────────────────────────── -->
+    <section class="py-32 px-6" id="projects">
+      <div class="max-w-screen-md mx-auto">
+        <h2 class="font-headline text-6xl mb-12 inline-block highlighter-mint uppercase">PROJECTS</h2>
+        <div class="flex flex-wrap gap-3 mb-16" id="filter-buttons">
+          <button
+            class="brutalist-button border-2 border-black rounded-full px-6 py-2 font-label text-sm font-bold uppercase tracking-wider"
+            data-filter="ALL" style="background-color:#F5E642">ALL</button>
+          <button
+            class="brutalist-button bg-white border-2 border-black rounded-full px-6 py-2 font-label text-sm font-bold uppercase tracking-wider hover:bg-surface-container-highest"
+            data-filter="SYSTEMS">SYSTEMS</button>
+          <button
+            class="brutalist-button bg-white border-2 border-black rounded-full px-6 py-2 font-label text-sm font-bold uppercase tracking-wider hover:bg-surface-container-highest"
+            data-filter="FULLSTACK">FULLSTACK</button>
+          <button
+            class="brutalist-button bg-white border-2 border-black rounded-full px-6 py-2 font-label text-sm font-bold uppercase tracking-wider hover:bg-surface-container-highest"
+            data-filter="ML">ML</button>
+        </div>
+        <div class="flex flex-col gap-12" id="projects-grid"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+  <footer
+    class="bg-black w-full border-t-[3px] border-[#F5E642] flex items-center justify-center py-8 px-4 gap-10"
+    id="contact">
+    <div class="flex flex-wrap justify-center gap-10" id="footer-socials"></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script>
+      (function () {
+
+        // ═══════════════════════════════════════════════════════════════════
+        // RENDER HERO — driven entirely from PORTFOLIO_DATA.hero
+        // ═══════════════════════════════════════════════════════════════════
+        function renderHero() {
+          var h = PORTFOLIO_DATA.hero;
+          document.getElementById('hero-title').textContent = h.name;
+          document.getElementById('hero-subtitle').textContent = h.subtitle;
+          document.getElementById('hero-bio').textContent = h.bio;
+
+          var linksDiv = document.getElementById('hero-links');
+          linksDiv.innerHTML = h.links.map(function (link) {
+            var ext = link.href.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+            return '<a class="brutalist-button bg-white border-2 border-black rounded-full px-8 py-3 font-label text-lg font-bold uppercase tracking-wider ' + link.hoverClass + ' hero-animate"' +
+              ' href="' + link.href + '"' + ext + '>' + link.label + '</a>';
+          }).join('');
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // TICKERS — JS rAF marquee for seamless, speed-stable looping
+        // ═══════════════════════════════════════════════════════════════════
+        function buildTickerHTML(phrases) {
+          var segment = phrases.map(function (p) { return p + ' ✦ '; }).join('') + ' ';
+          // Two identical copies side-by-side — loop resets when offset = one copy width
+          return '<span class="ticker-segment">' + segment + '</span>' +
+            '<span class="ticker-segment">' + segment + '</span>';
+        }
+
+        function startMarquee(elementId, pxPerSec) {
+          var el = document.getElementById(elementId);
+          var offset = 0;
+          var lastTime = null;
+          var segWidth = 0;
+
+          function tick(now) {
+            if (!lastTime) lastTime = now;
+            var delta = (now - lastTime) / 1000;
+            lastTime = now;
+
+            // Measure once after first paint (fonts loaded, layout stable)
+            if (segWidth === 0) {
+              var seg = el.querySelector('.ticker-segment');
+              if (seg) segWidth = seg.offsetWidth;
+            }
+
+            offset += pxPerSec * delta;
+            if (segWidth > 0 && offset >= segWidth) {
+              offset -= segWidth; // seamless reset — no visible jump
+            }
+
+            el.style.transform = 'translateX(-' + offset + 'px)';
+            requestAnimationFrame(tick);
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        function renderTickers() {
+          document.getElementById('ticker-mint').innerHTML = buildTickerHTML(PORTFOLIO_DATA.tickers.mint);
+          document.getElementById('ticker-yellow').innerHTML = buildTickerHTML(PORTFOLIO_DATA.tickers.yellow);
+          startMarquee('ticker-mint', 100);
+          startMarquee('ticker-yellow', 100);
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // RENDER EXPERIENCE
+        // ═══════════════════════════════════════════════════════════════════
+        function renderExperience() {
+          var container = document.getElementById('experience-list');
+          var html = '';
+
+          PORTFOLIO_DATA.experience.forEach(function (entry) {
+            var tagsHtml = entry.tags.map(function (tag, i) {
+              var color = entry.tagColors[i] || '#FFFFFF';
+              return '<span class="border-2 border-black px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + color + '">' + tag + '</span>';
+            }).join('');
+
+            var bulletsHtml = entry.bullets.map(function (b) {
+              return '<li class="flex gap-3"><span class="text-xl flex-shrink-0">→</span><span>' + b + '</span></li>';
+            }).join('');
+
+            var badgeHtml = '';
+            if (entry.badgeText) {
+              var bgColor = entry.badgeIsReturn ? '#FF6B7A' : '#6DC8A0';
+              badgeHtml = '<span class="badge-pill" style="background-color:' + bgColor + '">' + entry.badgeText + '</span>';
+            }
+
+            var linkHtml = '';
+            if (entry.link) {
+              linkHtml = '<div class="mt-5"><a href="' + entry.link + '" target="_blank" rel="noopener" class="brutalist-button border-2 border-black rounded-full px-5 py-1 font-label text-xs font-bold uppercase tracking-wider inline-block" style="background-color:#F5E642">LEARN MORE →</a></div>';
+            }
+
+            var logoHtml = '<div class="logo-box" data-initials="' + entry.logoInitials + '">' +
+              '<img src="' + entry.logoSrc + '" alt="' + entry.company + ' logo" class="w-full h-full object-contain p-1"' +
+              ' onerror="this.style.display=\'none\';this.parentElement.classList.add(\'logo-fallback\')">' +
+              '</div>';
+
+            var divisionStr = entry.division ? ' (' + entry.division + ')' : '';
+
+            html += '<div class="brutalist-card border-[3px] border-black p-8 bg-transparent card-fade-in" data-id="' + entry.id + '">' +
+              '<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">' +
+              '<div class="flex items-start">' +
+              logoHtml +
+              '<div>' +
+              '<h3 class="font-headline text-4xl uppercase mb-1">' + entry.company + badgeHtml + '</h3>' +
+              '<p class="font-label text-base font-bold tracking-wider uppercase">' + entry.role + divisionStr + ' | ' + entry.period + '</p>' +
+              '</div>' +
+              '</div>' +
+              '<div class="flex flex-wrap gap-2">' + tagsHtml + '</div>' +
+              '</div>' +
+              '<ul class="font-mono text-sm space-y-4 list-none uppercase">' + bulletsHtml + '</ul>' +
+              linkHtml +
+              '</div>';
+          });
+
+          container.innerHTML = html;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // RENDER PROJECTS — techStack as dark pills, description accented
+        // ═══════════════════════════════════════════════════════════════════
+        function renderProjects() {
+          var container = document.getElementById('projects-grid');
+          var catColors = { FULLSTACK: '#6DC8A0', SYSTEMS: '#FF6B7A', ML: '#C49FD8' };
+          var palette = ['#6DC8A0', '#F5E642', '#FF6B7A', '#C49FD8'];
+          var html = '';
+
+          PORTFOLIO_DATA.projects.forEach(function (project) {
+            var techHtml = project.techStack.map(function (t, i) {
+              var color = palette[i % palette.length];
+              return '<span class="border-2 border-black px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + color + '">' + t + '</span>';
+            }).join('');
+
+            var linksHtml = project.links.map(function (link) {
+              var bg = link.label === 'GITHUB' ? '#6DC8A0' : '#F5E642';
+              return '<a class="brutalist-button border-2 border-black rounded-full px-4 py-1 text-center font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + bg + '" href="' + link.href + '">' + link.label + '</a>';
+            }).join('');
+
+            var statsHtml = project.stats.map(function (s) {
+              return '<span class="inline-block border-2 border-black px-3 py-0.5 font-label text-xs uppercase tracking-wider mr-2 mb-1" style="background-color:#F5E642">' + s + '</span>';
+            }).join('');
+
+            var catColor = catColors[project.category] || '#FFFFFF';
+
+            html += '<div class="project-card-wrapper visible-filter" data-category="' + project.category + '">' +
+              '<div class="brutalist-card border-[3px] border-black p-8 bg-transparent card-fade-in">' +
+              '<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">' +
+              '<div class="min-w-0">' +
+              '<div class="flex items-center gap-3 mb-2 flex-wrap">' +
+              '<h3 class="font-headline text-4xl uppercase">' + project.title + '</h3>' +
+              '<span class="border-2 border-black px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + catColor + '">' + project.category + '</span>' +
+              '</div>' +
+              '<p class="font-label text-sm font-bold tracking-wider uppercase mb-3">' + project.subtitle + '</p>' +
+              '<p class="font-mono text-sm leading-relaxed uppercase border-l-4 border-black pl-4 py-1 bg-[#f5faf8] mb-3">' + project.description + '</p>' +
+              '<div class="flex flex-wrap gap-2 mb-3">' + techHtml + '</div>' +
+              '<div class="mb-0">' + statsHtml + '</div>' +
+              '</div>' +
+              '<div class="flex flex-row md:flex-col gap-3 flex-shrink-0">' + linksHtml + '</div>' +
+              '</div>' +
+              '</div>' +
+              '</div>';
+          });
+
+          container.innerHTML = html;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // RENDER FOOTER
+        // ═══════════════════════════════════════════════════════════════════
+        function renderFooter() {
+          var f = PORTFOLIO_DATA.footer;
+          document.getElementById('footer-socials').innerHTML = f.socials.map(function (s) {
+            var ext = (s.href.startsWith('http') || s.href.startsWith('mailto')) ? ' target="_blank" rel="noopener"' : '';
+            return '<a class="text-white hover:text-[#6DC8A0] transition-colors font-label text-base font-bold uppercase border-b border-transparent hover:border-[#6DC8A0] tracking-wider"' +
+              ' href="' + s.href + '"' + ext + '>' + s.label + '</a>';
+          }).join('');
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // PROJECT FILTERS — transitionend → display:none for clean spacing
+        // ═══════════════════════════════════════════════════════════════════
+        function setupFilters() {
+          var buttons = document.querySelectorAll('#filter-buttons button');
+
+          buttons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              buttons.forEach(function (b) { b.style.backgroundColor = 'white'; });
+              btn.style.backgroundColor = '#F5E642';
+
+              var filter = btn.dataset.filter;
+
+              document.querySelectorAll('.project-card-wrapper').forEach(function (w) {
+                var matches = filter === 'ALL' || w.dataset.category === filter;
+
+                if (matches) {
+                  w.style.display = '';
+                  // Force reflow so transition plays from hidden state
+                  void w.offsetHeight;
+                  w.classList.remove('hidden-filter');
+                  w.classList.add('visible-filter');
+                } else {
+                  w.classList.remove('visible-filter');
+                  w.classList.add('hidden-filter');
+                  // After transition, fully remove from layout
+                  w.addEventListener('transitionend', function handler(e) {
+                    if (e.propertyName !== 'opacity') return;
+                    if (w.classList.contains('hidden-filter')) {
+                      w.style.display = 'none';
+                    }
+                    w.removeEventListener('transitionend', handler);
+                  });
+                }
+              });
+            });
+          });
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // SECTION-ENTER CARD ANIMATION — fires once per section
+        // ═══════════════════════════════════════════════════════════════════
+        function observeSections() {
+          var targets = [
+            document.getElementById('experience-list'),
+            document.getElementById('projects-grid')
+          ];
+
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              var cards = Array.from(entry.target.querySelectorAll('.card-fade-in'));
+              cards.forEach(function (card, i) {
+                setTimeout(function () { card.classList.add('visible'); }, i * 80);
+              });
+              observer.unobserve(entry.target);
+            });
+          }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+
+          targets.forEach(function (t) { if (t) observer.observe(t); });
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // HERO ENTRANCE ANIMATION
+        // ═══════════════════════════════════════════════════════════════════
+        function animateHero() {
+          var els = document.querySelectorAll('.hero-animate');
+          els.forEach(function (el, i) {
+            setTimeout(function () { el.classList.add('visible'); }, 120 + i * 130);
+          });
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // SCROLL SPY — highlights active section pill in both nav bars
+        // ═══════════════════════════════════════════════════════════════════
+        function setupScrollSpy() {
+          var sectionIds = ['about', 'experience', 'projects'];
+
+          window.addEventListener('scroll', function () {
+            var scrollPos = window.scrollY + 130;
+            var active = 'about';
+
+            sectionIds.forEach(function (id) {
+              var el = document.getElementById(id);
+              if (el && el.offsetTop <= scrollPos) active = id;
+            });
+
+            // Target ALL nav links (desktop + mobile)
+            document.querySelectorAll('a[data-section]').forEach(function (link) {
+              if (link.dataset.section === active) {
+                link.classList.add('nav-pill-active');
+              } else {
+                link.classList.remove('nav-pill-active');
+              }
+            });
+          }, { passive: true });
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // SMOOTH SCROLL
+        // ═══════════════════════════════════════════════════════════════════
+        function setupSmoothScroll() {
+          document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+              var href = anchor.getAttribute('href');
+              if (!href || href === '#') return;
+              var target = document.querySelector(href);
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+            });
+          });
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // MOBILE MENU TOGGLE
+        // ═══════════════════════════════════════════════════════════════════
+        function setupMobileMenu() {
+          var btn = document.getElementById('mobile-menu-btn');
+          var menu = document.getElementById('mobile-menu');
+
+          btn.addEventListener('click', function () {
+            var isOpen = menu.style.maxHeight && menu.style.maxHeight !== '0px';
+            menu.style.maxHeight = isOpen ? '0px' : '300px';
+          });
+
+          // Close on link click (smooth scroll takes over)
+          document.querySelectorAll('#mobile-menu a').forEach(function (a) {
+            a.addEventListener('click', function () {
+              menu.style.maxHeight = '0px';
+            });
+          });
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // INIT — order matters
+        // ═══════════════════════════════════════════════════════════════════
+        renderHero();        // must be before animateHero (creates .hero-animate links)
+        renderTickers();     // starts rAF loops immediately
+        renderExperience();
+        renderProjects();
+        renderFooter();
+        setupFilters();
+        observeSections();
+        animateHero();       // after renderHero so hero links exist
+        setupScrollSpy();
+        setupSmoothScroll();
+        setupMobileMenu();
+
+      })();
+  </script>
+</body>
+
+</html>

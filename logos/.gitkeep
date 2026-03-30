@@ -1,0 +1,13 @@
+# Drop logo image files here.
+# Name them exactly:
+#   microsoft.png
+#   conedison.png
+#   mastercard.png
+#   bnpparibas.png
+#   capitalone.png
+#   uvii.png
+#   barclays.png
+#   google.png
+#
+# Supported formats: PNG, JPG, SVG, WEBP
+# They will be automatically cropped to a 40x40 rounded box.
