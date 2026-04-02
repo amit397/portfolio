@@ -4,7 +4,7 @@ const PORTFOLIO_DATA = {
   hero: {
     name: "AMIT HOWLADER",
     subtitle: "SOFTWARE ENGINEER · CS @ CITY COLLEGE OF NEW YORK",
-    bio: "I'm a Computer Science graduate with experience building backend systems and APIs at companies like Microsoft and Mastercard. I love working on problems at the intersection of performance, reliability, and scale.",
+    bio: "I'm a graduating Computer Science student with experience building backend systems and APIs at companies like Microsoft and Mastercard. I love working on problems at the intersection of performance, reliability, and scale.",
     links: [
       { label: "LINKEDIN", href: "https://www.linkedin.com/in/amitHowlader", hoverClass: "hover:bg-primary-container" },
       { label: "GITHUB", href: "https://github.com/amit397", hoverClass: "hover:bg-secondary-container" },
