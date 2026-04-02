@@ -8,7 +8,7 @@ const PORTFOLIO_DATA = {
     links: [
       { label: "LINKEDIN", href: "https://www.linkedin.com/in/amitHowlader", hoverClass: "hover:bg-primary-container" },
       { label: "GITHUB", href: "https://github.com/amit397", hoverClass: "hover:bg-secondary-container" },
-      { label: "RESUME", href: "#", hoverClass: "hover:bg-tertiary-container" },
+      { label: "RESUME", href: "https://docs.google.com/document/d/1gnab0mgqj369X5fc7aJ4fqpIINoOeFTNTTGjg8Crgo0/edit?usp=sharing", hoverClass: "hover:bg-tertiary-container" },
       { label: "EMAIL", href: "mailto:amitzxc123@gmail.com", hoverClass: "hover:bg-primary-fixed" }
     ]
   },

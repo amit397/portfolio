@@ -380,7 +380,7 @@
 
           var linksDiv = document.getElementById('hero-links');
           linksDiv.innerHTML = h.links.map(function (link) {
-            var ext = link.href.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+            var ext = link.href.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
             return '<a class="brutalist-button bg-white border-2 border-black rounded-full px-8 py-3 font-label text-lg font-bold uppercase tracking-wider ' + link.hoverClass + ' hero-animate"' +
               ' href="' + link.href + '"' + ext + '>' + link.label + '</a>';
           }).join('');
@@ -475,7 +475,7 @@
 
             var linkHtml = '';
             if (entry.link) {
-              linkHtml = '<div class="mt-5"><a href="' + entry.link + '" target="_blank" rel="noopener" class="brutalist-button border-2 border-black rounded-full px-5 py-1 font-label text-xs font-bold uppercase tracking-wider inline-block" style="background-color:#F5E642">LEARN MORE →</a></div>';
+              linkHtml = '<div class="mt-5"><a href="' + entry.link + '" target="_blank" rel="noopener noreferrer" class="brutalist-button border-2 border-black rounded-full px-5 py-1 font-label text-xs font-bold uppercase tracking-wider inline-block" style="background-color:#F5E642">LEARN MORE →</a></div>';
             }
 
             var logoHtml = '<div class="logo-box" data-initials="' + entry.logoInitials + '">' +
@@ -519,7 +519,8 @@
 
             var linksHtml = project.links.map(function (link) {
               var bg = link.label === 'GITHUB' ? '#6DC8A0' : '#F5E642';
-              return '<a class="brutalist-button border-2 border-black rounded-full px-4 py-1 text-center font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + bg + '" href="' + link.href + '">' + link.label + '</a>';
+              var ext = link.href.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
+              return '<a class="brutalist-button border-2 border-black rounded-full px-4 py-1 text-center font-label text-xs font-bold uppercase tracking-wider" style="background-color:' + bg + '" href="' + link.href + '"' + ext + '>' + link.label + '</a>';
             }).join('');
 
             var statsHtml = project.stats.map(function (s) {
@@ -556,7 +557,7 @@
         function renderFooter() {
           var f = PORTFOLIO_DATA.footer;
           document.getElementById('footer-socials').innerHTML = f.socials.map(function (s) {
-            var ext = (s.href.startsWith('http') || s.href.startsWith('mailto')) ? ' target="_blank" rel="noopener"' : '';
+            var ext = (s.href.startsWith('http') || s.href.startsWith('mailto')) ? ' target="_blank" rel="noopener noreferrer"' : '';
             return '<a class="text-white hover:text-[#6DC8A0] transition-colors font-label text-base font-bold uppercase border-b border-transparent hover:border-[#6DC8A0] tracking-wider"' +
               ' href="' + s.href + '"' + ext + '>' + s.label + '</a>';
           }).join('');
