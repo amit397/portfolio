@@ -235,7 +235,7 @@ const PORTFOLIO_DATA = {
       stats: ["24-HOUR MVP", "1ST PLACE AMONG 8 TEAMS"],
       tags: ["NEXTJS", "NODEJS", "GOOGLE CLOUD", "OCR"],
       links: [
-        { label: "GITHUB", href: "#" }
+        { label: "GITHUB", href: "https://github.com/amit397/findoctranslator" }
       ]
     },
     {
@@ -248,9 +248,38 @@ const PORTFOLIO_DATA = {
       stats: ["150K+ PROPOSALS — ZERO VIOLATIONS", "1M+ TOTAL FUZZ TEST TRANSACTIONS"],
       tags: ["RUST", "CONCURRENCY", "TESTING", "AI SAFETY"],
       links: [
-        { label: "GITHUB", href: "#" }
+        { label: "GITHUB", href: "https://github.com/amit397/Rust-Financial-Ledger" }
       ]
     },
+    {
+      id: "poker-equity-visualizer",
+      title: "POKER EQUITY VISUALIZER",
+      category: "FULLSTACK",
+      subtitle: "Simulate poker hands and understand win probability in real time.",
+      description: "BUILT A POKER EQUITY CALCULATOR THAT RUNS 4,000 MONTE CARLO SIMULATIONS PER HAND TO COMPUTE REAL-TIME WIN PROBABILITY FOR UP TO 6 PLAYERS, WITH OUTS TRACKING, AN EQUITY SPARKLINE, AND SHAREABLE HAND URLS.",
+      techStack: ["NEXT.JS", "TYPESCRIPT", "WEB WORKERS", "FRAMER MOTION"],
+      stats: ["4,000 SIMULATIONS/HAND", "UP TO 6 PLAYERS", "100% CLIENT-SIDE"],
+      tags: ["NEXT.JS", "TYPESCRIPT", "REACT", "TAILWIND"],
+      links: [
+        { label: "GITHUB", href: "https://github.com/amit397/pokersim" },
+        { label: "LIVE", href: "https://pokersim-xi.vercel.app" }
+      ]
+    },
+    {
+      id: "polymarket-insider-tracker",
+      title: "POLYMARKET INSIDER TRACKER",
+      category: "FULLSTACK",
+      subtitle: "Detect suspicious trading activity on Polymarket prediction markets.",
+      description: "BUILT A REAL-TIME INSIDER TRADING DETECTION DASHBOARD THAT ANALYZES BLOCKCHAIN TRADE DATA USING A 6-FACTOR SUSPICION SCORING ENGINE TO FLAG WALLETS WITH ANOMALOUS PATTERNS.",
+      techStack: ["NEXTJS", "REACT", "PYTHON", "FASTAPI", "SQLITE", "POLYGONSCAN API"],
+      stats: ["6-FACTOR SCORING ENGINE", "4 EXTERNAL API INTEGRATIONS"],
+      tags: ["NEXTJS", "FASTAPI", "PYTHON", "BLOCKCHAIN", "DATA ANALYSIS"],
+      links: [
+        { label: "GITHUB", href: "https://github.com/amit397/PolymarketInsiderTracker" },
+        { label: "LIVE", href: "https://polymarketinsider.vercel.app/" }
+      ]
+    },
+
     {
       id: "marketlens",
       title: "MARKETLENS",
@@ -261,7 +290,6 @@ const PORTFOLIO_DATA = {
       stats: ["40% VISIBILITY IMPROVEMENT IN DEMOS", "TEAM OF 5"],
       tags: ["REACTJS", "NODEJS", "GENAI", "SEO"],
       links: [
-        { label: "GITHUB", href: "#" }
       ]
     }
   ],
